@@ -1,7 +1,7 @@
 export interface OperationResult {
     operation: string;
-    nombre1: number;
-    nombre2: number;
-    resultat: number;
+    number1: number;
+    number2: number;
+    result: number;
   }
   

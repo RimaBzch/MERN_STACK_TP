@@ -10,16 +10,16 @@ export class MathController {
 
   public calculate(req: Request, res: Response) {
     try {
-      const nombre1 = Number(req.query.nombre1);
-      const nombre2 = Number(req.query.nombre2);
+      const number1 = Number(req.query.number1);
+      const number2 = Number(req.query.number2);
       const operation = String(req.query.operation);
 
-      const result = this.mathService.calculate(nombre1, nombre2, operation);
+      const result = this.mathService.calculate(number1, number2, operation);
 
       res.json({
         operation,
-        nombre1,
-        nombre2,
+        number1,
+        number2,
         resultat: result,
       });
     } catch (error) {

@@ -1,19 +1,24 @@
 import { Request, Response, NextFunction } from 'express';
 
-export const validator = (req: Request, res: Response, next: NextFunction) => {
-  const nombre1 = Number(req.query.nombre1);
-  const nombre2 = Number(req.query.nombre2);
-  const operation = String(req.query.operation);
+export class Validator {
+  constructor() {}
 
-  if (isNaN(nombre1) || isNaN(nombre2)) {
-    res
-      .status(400)
-      .json({ error: 'Les deux nombres doivent être des nombres.' });
-    return;
-  }
-  if (operation == 'div' && nombre2 == 0) {
-    res.status(400).json({ error: 'Le quotient doit être different de 0!' });
-    return;
-  }
-  next();
-};
+  public validate(req: Request, res: Response, next: NextFunction) {
+    const number1 = Number(req.query.number1);
+    const number2 = Number(req.query.number2);
+    const operation = String(req.query.operation);
+  // console.log(operation, number1, number2);
+
+    if (isNaN(number1) || isNaN(number2)) {
+      res
+        .status(400)
+        .json({ error: 'Les deux nombres doivent être de type number.' });
+      return;
+    }
+    if (operation == 'div' && number2 == 0) {
+      res.status(400).json({ error: 'Le quotient doit être différent de 0!' });
+      return;
+    }
+    next();
+  
+};}
